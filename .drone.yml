@@ -1,0 +1,20 @@
+debug: true
+
+build:
+  image: quantumobject/docker-alpine
+  commands:
+    - echo "Nothing to do here..."
+
+publish:
+  docker:
+    username: $$DOCKER_USERNAME
+    password: $$DOCKER_PASSWORD
+    email: $$DOCKER_EMAIL
+    repo: joe1chen/marathon-s3-ecr-credentials
+    storage_driver: overlay
+    tag:
+      - latest
+      - "1.0.$$BUILD_NUMBER"
+    when:
+      branch: master
+      event: push
