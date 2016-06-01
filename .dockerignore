@@ -1,5 +1,6 @@
 README.md
 Dockerfile
+marathon
 .git
 .gitignore
 .drone.yml
