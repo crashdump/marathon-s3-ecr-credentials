@@ -5,3 +5,4 @@ marathon
 .gitignore
 .drone.yml
 .drone.sec
+secrets.yml
