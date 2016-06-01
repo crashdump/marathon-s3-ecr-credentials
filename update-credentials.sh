@@ -5,7 +5,7 @@
 TEMP_DOCKER_DIR=/tmp/.docker
 TEMP_DOCKER_CONFIG_FILE=$TEMP_DOCKER_DIR/config.json
 LOCAL_DOCKER_CONFIG_FILE=~/.docker/config.json
-DOCKER_GZ_FILE=/tmp/$CREDENTIALS_FILENAME
+DOCKER_GZ_FILE=/tmp/docker-config.tar.gz
 
 if [ ! -f $TEMP_DOCKER_DIR ]
 then
@@ -33,7 +33,7 @@ else
   else
     echo "Ok: " $TEMP_DOCKER_CONFIG_FILE " exists.";
 
-    tar czf /tmp/$CREDENTIALS_FILENAME -C /tmp .docker
+    tar czf /tmp/docker-config.tar.gz -C /tmp .docker
 
     if [ ! -f $DOCKER_GZ_FILE ]
     then
