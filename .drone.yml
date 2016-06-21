@@ -1,7 +1,7 @@
 debug: true
 
 build:
-  image: quantumobject/docker-alpine
+  image: alpine
   commands:
     - echo "Nothing to do here..."
 
@@ -10,7 +10,7 @@ publish:
     username: $$DOCKER_USERNAME
     password: $$DOCKER_PASSWORD
     email: $$DOCKER_EMAIL
-    repo: joe1chen/marathon-s3-ecr-credentials
+    repo: crashdump/marathon-s3-ecr-credentials
     storage_driver: overlay
     tag:
       - latest

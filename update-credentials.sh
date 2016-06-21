@@ -1,6 +1,9 @@
 #!/bin/sh
 
-# Need to define AWS_DEFAULT_REGION, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, S3_URL
+if [[ -z "$AWS_DEFAULT_REGION" || -z "$AWS_ACCESS_KEY_ID" || -z "$AWS_SECRET_ACCESS_KEY" || -z "$S3_URL" ]]; then
+    echo "This script requires AWS_DEFAULT_REGION, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY and S3_URL env variables."
+    exit 1
+fi
 
 TEMP_DOCKER_DIR=/tmp/.docker
 TEMP_DOCKER_CONFIG_FILE=$TEMP_DOCKER_DIR/config.json
@@ -16,7 +19,7 @@ fi
 source /env/bin/activate
 
 # Login to ECR
-aws ecr get-login --region $AWS_DEFAULT_REGION | sh -
+eval $(aws ecr get-login --region $AWS_DEFAULT_REGION)
 
 if [ ! -f $LOCAL_DOCKER_CONFIG_FILE ]
 then
