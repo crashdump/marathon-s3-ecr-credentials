@@ -8,4 +8,4 @@ build:
 	docker tag $(repository_name)/$(container_name) $(repository_name)/$(container_name):$(shell cat VERSION)
 
 push:
-	docker push $(repository_name)/$(container_name):$(shell cat VERSION)
+	docker push $(repository_name)/$(container_name):latest

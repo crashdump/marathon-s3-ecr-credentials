@@ -1,7 +1,5 @@
 FROM alpine
 
-COPY docker-entrypoint.sh /usr/local/bin/
-
 RUN apk add --update \
     docker \
     python \
@@ -21,4 +19,4 @@ COPY . /opt
 RUN echo '@reboot      /opt/update-credentials.sh' >> /etc/crontabs/root
 RUN echo '*/10 * * * * /opt/update-credentials.sh' >> /etc/crontabs/root
 
-CMD ["crond", "-f", "-d", "8"]
+CMD /opt/update-credentials.sh && crond -f -d 8
