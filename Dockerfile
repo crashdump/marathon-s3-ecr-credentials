@@ -1,13 +1,9 @@
-FROM alpine
+FROM alpine:3.3
 
-RUN apk add --update \
-    docker \
-    python \
-    python-dev \
-    py-pip \
-    build-base \
-  && pip install virtualenv \
-  && rm -rf /var/cache/apk/*
+RUN apk add --update python python-dev py-pip build-base
+RUN pip install virtualenv
+RUN apk add docker=1.9.1-r2 \
+    && rm -rf /var/cache/apk/*
 
 WORKDIR /opt
 
